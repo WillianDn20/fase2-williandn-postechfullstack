@@ -10,6 +10,13 @@ jobs:
   testes:
     runs-on: ubuntu-latest
 
+    # Isso avisa o GitHub para criar um banco de dados temporário para o teste
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
     steps:
     - name: Baixar o codigo do repositorio
       uses: actions/checkout@v3
