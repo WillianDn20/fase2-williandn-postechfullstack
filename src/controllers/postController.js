@@ -3,11 +3,11 @@ const Post = require('../models/Post.js');
 // Cria uma nova postagem
 exports.createPost = async (req, res) => {
   try {
-    const newPost = new Post(req.body);
-    const savedPost = await newPost.save();
+    const newPost = new Post(req.body); //Pega o conteudo e salva na const
+    const savedPost = await newPost.save(); //Salva 
     
-    res.status(201).json(savedPost);
-  } catch (error) {
+    res.status(201).json(savedPost); //Responde o codigo de sucesso
+  } catch (error) { //Se der erro, responde com o codigo de erro
     res.status(400).json({ message: 'Erro ao criar a postagem', details: error.message });
   }
 };
@@ -15,14 +15,14 @@ exports.createPost = async (req, res) => {
 // Lista todas as postagens
 exports.getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
+    const posts = await Post.find(); //Busca todos os posts do banco de dados
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: 'Erro interno ao buscar as postagens', details: error.message });
   }
 };
 
-// Busca postagens por palavra-chave no título ou conteúdo
+// Busca postagens por título ou conteúdo
 exports.searchPosts = async (req, res) => {
   try {
     const { term } = req.query; // Captura o parâmetro da URL (ex: ?term=Unity)

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const postController = require('../controllers/postController');
 
+//pega o get/post e encaminha para a funcao desejada
 router.get('/', postController.getAllPosts);
 router.post('/', postController.createPost);
 
